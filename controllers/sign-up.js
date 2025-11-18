@@ -35,7 +35,7 @@ const signUp = [
     const user = {
       username: req.body.username,
       password: await bcrypt.hash(req.body.password, 10),
-      isAuthor: req.body.isAuthor,
+      isAuthor: req.body["is-author"],
     };
 
     const newUser = await userDB.createUser(user);
