@@ -29,7 +29,7 @@ model Post {
   content     String
   isPublished Boolean   @default(false)
   authorId    String
-  author      User      @relation(fields: [authorId], references: [id])
+  author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
   comments    Comment[]
 }
 
@@ -39,5 +39,5 @@ model Comment {
   date       DateTime @default(now())
   content    String
   postId     String
-  post       Post     @relation(fields: [postId], references: [id])
+  post       Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
