@@ -7,8 +7,8 @@ const signUp = [
   body("username")
     .trim()
     .toLowerCase()
-    .isLength({ min: 8, max: 50 })
-    .withMessage("Username must be between 8 and 50 characters inclusive!")
+    .isLength({ min: 4, max: 20 })
+    .withMessage("Username must be between 4 and 20 characters inclusive!")
     .custom(async (value) => {
       const user = await userDB.getUserByUsername(value);
       if (user) {
