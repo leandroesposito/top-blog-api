@@ -1,6 +1,6 @@
 import passport from "passport";
 
-function authenticate(requireAuthor = true) {
+function authenticate(requireAuthor = false) {
   return function (req, res, next) {
     return passport.authenticate(
       "jwt",
