@@ -21,7 +21,8 @@ const logIn = [
           .json({ errors: ["Invalid username or password!"] });
       }
 
-      const newToken = jwt.sign({ id: user.id }, process.env.JWTTOKEN);
+      const newToken =
+        "bearer " + jwt.sign({ id: user.id }, process.env.JWTTOKEN);
       res.status(200).json({ username: user.username, token: newToken });
     } catch (error) {
       return res.status(500).json({ errors: ["Server error", error.message] });
