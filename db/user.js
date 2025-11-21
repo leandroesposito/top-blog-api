@@ -47,7 +47,7 @@ async function getUserByUsername(username) {
   return user;
 }
 
-async function updateUserById(user) {
+async function updateUser(user) {
   const updatedUser = await prisma.user.update({
     where: {
       id: user.id,
@@ -77,6 +77,6 @@ export {
   getAllUsers,
   getUserById,
   getUserByUsername,
-  updateUserById,
+  updateUser,
   deleteUserById,
 };
