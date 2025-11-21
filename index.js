@@ -5,6 +5,7 @@ import jwtStrategy from "./auth/jwtStrategy.js";
 import logInRouter from "./routes/logIn.js";
 import signUpRouter from "./routes/signUp.js";
 import postRouter from "./routes/post.js";
+import commentRouter from "./routes/comment.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ passport.use(jwtStrategy);
 app.use("/log-in", logInRouter);
 app.use("/sign-up", signUpRouter);
 app.use("/posts", postRouter);
+app.use("/comments", commentRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "App running!" });
