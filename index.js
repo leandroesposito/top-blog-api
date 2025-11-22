@@ -6,11 +6,13 @@ import logInRouter from "./routes/logIn.js";
 import signUpRouter from "./routes/signUp.js";
 import postRouter from "./routes/post.js";
 import commentRouter from "./routes/comment.js";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 passport.use(jwtStrategy);
 
 app.use("/log-in", logInRouter);
