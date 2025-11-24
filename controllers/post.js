@@ -78,8 +78,13 @@ const createPost = [
 ];
 
 const getAllPosts = [
+  authenticate(false, false),
   async function getAllPosts(req, res) {
-    const posts = await postDB.getAllPosts();
+    let posts = await postDB.getAllPosts();
+
+    posts = posts.filter((post) => {
+      return post.isPublished || (req.user && req.user.id === post.authorId);
+    });
 
     res.status(200).json({ posts });
   },
@@ -88,16 +93,29 @@ const getAllPosts = [
 const getPostById = [
   postExist(),
   checkValidations,
+  authenticate(false, false),
   async function getPostById(req, res) {
-    res.status(200).json({ post: req.post });
+    if (
+      !req.post.isPublished &&
+      (!req.user || req.user.id !== req.post.authorId)
+    ) {
+      return res.status(403).json({ errors: ["Unauthorized"] });
+    }
+
+    return res.status(200).json({ post: req.post });
   },
 ];
 
 const getPostsByAuthorId = [
   authorExist(),
   checkValidations,
+  authenticate(false, false),
   async function getPostsByAuthorId(req, res) {
-    const posts = await postDB.getPostsByAuthorId(req.author.id);
+    let posts = await postDB.getPostsByAuthorId(req.author.id);
+
+    posts = posts.filter((post) => {
+      return post.isPublished || (req.user && req.user.id === post.authorId);
+    });
 
     res.status(200).json({ posts });
   },
