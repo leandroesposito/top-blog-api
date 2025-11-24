@@ -32,7 +32,9 @@ const logIn = [
 
       const newToken =
         "bearer " + jwt.sign({ id: user.id }, process.env.JWTTOKEN);
-      res.status(200).json({ username: user.username, token: newToken });
+      res
+        .status(200)
+        .json({ username: user.username, userId: user.id, token: newToken });
     } catch (error) {
       return res.status(500).json({ errors: ["Server error", error.message] });
     }
