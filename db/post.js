@@ -10,6 +10,13 @@ async function createPost(post) {
       isPublished: post.isPublished,
       authorId: post.authorId,
     },
+    include: {
+      author: {
+        omit: {
+          password: true,
+        },
+      },
+    },
   });
 
   return newPost;
