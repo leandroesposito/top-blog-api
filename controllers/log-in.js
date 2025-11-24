@@ -36,6 +36,7 @@ const logIn = [
         .status(200)
         .json({ username: user.username, userId: user.id, token: newToken });
     } catch (error) {
+      console.error(error);
       return res.status(500).json({ errors: ["Server error", error.message] });
     }
   },
