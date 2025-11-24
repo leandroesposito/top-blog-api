@@ -2,8 +2,17 @@ import * as userDB from "../db/user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import "dotenv/config";
+import { body } from "express-validator";
+import { checkValidations } from "./input-validator.js";
 
 const logIn = [
+  body("username")
+    .exists({ values: "falsy" })
+    .withMessage("username can't be empty"),
+  body("password")
+    .exists({ values: "falsy" })
+    .withMessage("password can't be empty"),
+  checkValidations,
   async function logIn(req, res) {
     try {
       const user = await userDB.getUserByUsername(req.body.username);
