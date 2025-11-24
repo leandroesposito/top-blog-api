@@ -1,6 +1,6 @@
 import passport from "passport";
 
-function authenticate(requireAuthor = false) {
+function authenticate(requireAuthor = false, rejectOnFail = true) {
   return function (req, res, next) {
     return passport.authenticate(
       "jwt",
@@ -11,7 +11,7 @@ function authenticate(requireAuthor = false) {
           next(error);
         }
 
-        if (!user) {
+        if (!user && rejectOnFail) {
           return res.status(401).json({
             errors: ["Not authorized, invalid token"],
           });
