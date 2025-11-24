@@ -16,7 +16,12 @@ async function createPost(post) {
 }
 
 async function getAllPosts() {
-  const posts = await prisma.post.findMany();
+  const posts = await prisma.post.findMany({
+    include: {
+      comments: true,
+      author: true,
+    },
+  });
 
   return posts;
 }
@@ -25,6 +30,10 @@ async function getPostById(id) {
   const post = await prisma.post.findUnique({
     where: {
       id: id,
+    },
+    include: {
+      comments: true,
+      author: true,
     },
   });
 
@@ -35,6 +44,10 @@ async function getPostsByAuthorId(id) {
   const posts = await prisma.post.findMany({
     where: {
       authorId: id,
+    },
+    include: {
+      comments: true,
+      author: true,
     },
   });
 
