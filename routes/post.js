@@ -8,7 +8,6 @@ postRouter.post("/:postId/comments", commentController.createComment);
 postRouter.get("/", postController.getAllPosts);
 postRouter.get("/:postId", postController.getPostById);
 postRouter.get("/author/:authorId", postController.getPostsByAuthorId);
-postRouter.get("/author/:authorId", postController.getPostsByAuthorId);
 postRouter.get("/:postId/comments", commentController.getCommentsByPostId);
 postRouter.put("/:postId", postController.updatePost);
 postRouter.delete("/:postId", postController.deletePostById);
