@@ -89,6 +89,7 @@ async function updatePost(post) {
           password: true,
         },
       },
+      comments: true,
     },
   });
 
