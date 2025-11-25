@@ -26,7 +26,11 @@ async function getAllPosts() {
   const posts = await prisma.post.findMany({
     include: {
       comments: true,
-      author: true,
+      author: {
+        omit: {
+          password: true,
+        },
+      },
     },
   });
 
@@ -40,7 +44,11 @@ async function getPostById(id) {
     },
     include: {
       comments: true,
-      author: true,
+      author: {
+        omit: {
+          password: true,
+        },
+      },
     },
   });
 
@@ -54,7 +62,11 @@ async function getPostsByAuthorId(id) {
     },
     include: {
       comments: true,
-      author: true,
+      author: {
+        omit: {
+          password: true,
+        },
+      },
     },
   });
 
