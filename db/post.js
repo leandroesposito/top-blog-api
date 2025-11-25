@@ -83,6 +83,13 @@ async function updatePost(post) {
       content: post.content,
       isPublished: post.isPublished,
     },
+    include: {
+      author: {
+        omit: {
+          password: true,
+        },
+      },
+    },
   });
 
   return updatedPost;
