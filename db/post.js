@@ -25,12 +25,19 @@ async function createPost(post) {
 async function getAllPosts() {
   const posts = await prisma.post.findMany({
     include: {
-      comments: true,
+      comments: {
+        orderBy: {
+          date: "desc",
+        },
+      },
       author: {
         omit: {
           password: true,
         },
       },
+    },
+    orderBy: {
+      date: "desc",
     },
   });
 
@@ -43,7 +50,11 @@ async function getPostById(id) {
       id: id,
     },
     include: {
-      comments: true,
+      comments: {
+        orderBy: {
+          date: "desc",
+        },
+      },
       author: {
         omit: {
           password: true,
@@ -61,12 +72,19 @@ async function getPostsByAuthorId(id) {
       authorId: id,
     },
     include: {
-      comments: true,
+      comments: {
+        orderBy: {
+          date: "desc",
+        },
+      },
       author: {
         omit: {
           password: true,
         },
       },
+    },
+    orderBy: {
+      date: "desc",
     },
   });
 
@@ -89,7 +107,11 @@ async function updatePost(post) {
           password: true,
         },
       },
-      comments: true,
+      comments: {
+        orderBy: {
+          date: "desc",
+        },
+      },
     },
   });
 

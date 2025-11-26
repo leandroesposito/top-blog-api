@@ -15,7 +15,11 @@ async function createComment(comment) {
 }
 
 async function getAllComments() {
-  const comments = await prisma.comment.findMany();
+  const comments = await prisma.comment.findMany({
+    orderBy: {
+      date: "desc",
+    },
+  });
 
   return comments;
 }
@@ -34,6 +38,9 @@ async function getCommentsByPostId(id) {
   const comments = await prisma.comment.findMany({
     where: {
       postId: id,
+    },
+    orderBy: {
+      date: "desc",
     },
   });
 
