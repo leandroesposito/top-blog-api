@@ -20,6 +20,15 @@ This project was specifically designed to demonstrate and practice:
 ## Live Demo
 
 [View Live Demo](https://leandroesposito.github.io/top-blog-api-clients/)
+\*The free servers may take a few seconds to respond on first request.
+
+## Screenshots
+
+![Login](https://github.com/leandroesposito/top-blog-api/blob/main/screenshots/1_login.png)
+![Error](https://github.com/leandroesposito/top-blog-api/blob/main/screenshots/2_error.png)
+![New Post](https://github.com/leandroesposito/top-blog-api/blob/main/screenshots/3_new_post.png)
+![Post](https://github.com/leandroesposito/top-blog-api/blob/main/screenshots/4_post.png)
+![Comment](https://github.com/leandroesposito/top-blog-api/blob/main/screenshots/5_comment.png)
 
 ## What is REST?
 
